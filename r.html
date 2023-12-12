@@ -1,0 +1,20 @@
+<script type="text/javascript">
+  var hash = window.location.hash;
+  console.log(hash.substring(1));
+  getUrl(hash.substring(1));
+  function getUrl(vid) {
+      const api = 'https://fc-lxzgqcmbad.cn-shanghai.fcapp.run/';
+      fetch(api+vid, {
+          method: "get",
+      })
+          .then((response) => response.text())
+          .then((data) => {
+              window.location.href = data;
+          })
+          .catch((err) => {
+              console.log(err);
+          }).finally(() => {
+            
+          });
+  }
+</script>
