@@ -1,7 +1,11 @@
 <script type="text/javascript">
   var hash = window.location.hash;
   console.log(hash.substring(1));
-  getUrl(hash.substring(1));
+  var code = hash.substr(1,4);
+  console.log(code);
+  var index = hash.substr(4,1);
+  console.log(index);
+  getUrl(index);
   function getUrl(vid) {
       const api = 'https://service-ifkp9sue-1320134514.jp.apigw.tencentcs.com/api1?v=';
       fetch(api+vid, {
