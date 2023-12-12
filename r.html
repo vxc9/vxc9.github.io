@@ -9,7 +9,11 @@
       })
           .then((response) => response.text())
           .then((data) => {
-              window.location.replace(data);
+              // window.location.replace(data);
+            const a = document.createElement('a')
+            a.rel = 'noreferrer'
+            a.href = data
+            a.click()
           })
           .catch((err) => {
               console.log(err);
