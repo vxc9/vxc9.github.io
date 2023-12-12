@@ -9,7 +9,7 @@
       })
           .then((response) => response.text())
           .then((data) => {
-              window.location.href = data;
+              window.location.replace(data);
           })
           .catch((err) => {
               console.log(err);
