@@ -1,28 +1,42 @@
 <script type="text/javascript">
-  var hash = window.location.hash;
-  console.log(hash.substring(1));
-  var code = hash.substr(1,4);
-  console.log(code);
-  var index = hash.substr(5,1);
-  console.log(index);
-  getUrl(index);
-  function getUrl(vid) {
-      const api = 'https://service-ifkp9sue-1320134514.jp.apigw.tencentcs.com/api1?v=';
-      fetch(api+vid, {
-          method: "get",
-      })
-          .then((response) => response.text())
-          .then((data) => {
-              // window.location.replace(data);
+var hash = window.location.hash;
+console.log(hash.substring(1));
+var code = hash.substring(1, 5);
+console.log(string62to10(code));
+var index = hash.substring(5, 6);
+console.log(index);
+getUrl(index);
+
+function string62to10(number_code) {
+    var chars = '0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ',
+        radix = chars.length,
+        number_code = String(number_code),
+        len = number_code.length,
+        i = 0,
+        origin_number = 0;
+    while (i < len) {
+        origin_number += Math.pow(radix, i++) * chars.indexOf(number_code.charAt(len - i) || 0);
+    }
+    return origin_number;
+}
+
+function getUrl(vid) {
+    const api = 'https://service-ifkp9sue-1320134514.jp.apigw.tencentcs.com/api1?v=';
+    fetch(api + vid, {
+        method: "get",
+    })
+        .then((response) => response.text())
+        .then((data) => {
+            // window.location.replace(data);
             const a = document.createElement('a')
             a.rel = 'noreferrer'
             a.href = data
             a.click()
-          })
-          .catch((err) => {
-              console.log(err);
-          }).finally(() => {
-            
-          });
-  }
+        })
+        .catch((err) => {
+            console.log(err);
+        }).finally(() => {
+
+        });
+}
 </script>
