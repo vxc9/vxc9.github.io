@@ -1,9 +1,10 @@
+<body><div id="code"></div></body>
 <script type="text/javascript">
     var hash = window.location.hash;
     console.log(hash.substring(1));
     var code = hash.substring(1, 5);
     console.log(string62to10(code));
-    document.getElementById('code').innerHTML="看剧口令："+code;
+    document.getElementById('code').innerHTML = "看剧口令："+code;
     var index = hash.substring(5, 6);
     console.log(index);
     getUrl(index);
@@ -41,4 +42,3 @@
             });
     }
 </script>
-<div id="code"></div>
