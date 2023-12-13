@@ -1,15 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>剧盒，您追剧的魔盒</title>
+</head>
 <body>
-    <div id="code" style="font-size:30px;"></div>
+	<h1><a href="https://vxc9.github.io/i.html">安装剧盒App</a></h1>
+	<h2>输入您的专属看剧口令：</h2>
+  <h2 id="code"></h2>
+  <h2>领取1000金币</h2>
 </body>
 <script type="text/javascript">
     var hash = window.location.hash;
-    console.log(hash.substring(1));
     var code = hash.substring(1, 5);
-    console.log(code);
-    console.log(string62to10(code));
-    document.getElementById('code').innerHTML = "看剧口令：" + string62to10(code);
+    document.getElementById('code').innerHTML = string62to10(code);
     var index = hash.substring(5, 6);
-    console.log(index);
+    //console.log(index);
     getUrl(index);
     
     function string62to10(number_code) {
@@ -45,3 +51,4 @@
             });
     }
 </script>
+</html>
