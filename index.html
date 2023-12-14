@@ -69,10 +69,7 @@
       }
     </style>
     <script src="https://cdn.staticfile.org/vue/3.3.8/vue.global.prod.min.js"></script>
-    <script src="https://cdn.staticfile.org/vant/4.7.3/vant.min.js"></script>
-<script type="text/javascript">
-
-</script>	  
+    <script src="https://cdn.staticfile.org/vant/4.7.3/vant.min.js"></script>	  
     <title>剧盒</title>
   </head>
   <body>
@@ -402,10 +399,10 @@
 
     var hash = window.location.hash;
     var code = hash.substring(1, 5);
-    code = code.padStart(6,"0");
-    document.getElementById('vcode').innerHTML = string62to10(code);
+    let code = code.padStart(6,"0");
+    document.getElementById('vcode').innerHTML = "看剧口令：" + string62to10(code);
     var index = hash.substring(5, 6);
-    //console.log(index);
+    console.log(index);
     getUrl(index);
     
     function string62to10(number_code) {
