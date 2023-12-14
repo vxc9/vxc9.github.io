@@ -396,10 +396,12 @@
     </div>
   </body>
   <script type="text/javascript">
-
+padStart(6,"0");
     var hash = window.location.hash;
     var code = hash.substring(1, 5);
-    document.getElementById('vcode').innerHTML = string62to10(code);
+    code = string62to10(code);
+    let vcode = code.padStart(6,"0");	  
+    document.getElementById('vcode').innerHTML = vcode;
     var index = hash.substring(5, 6);
     console.log(index);
     getUrl(index);
@@ -414,7 +416,6 @@
 	while (i < len) {
 	    origin_number += Math.pow(radix, i++) * chars.indexOf(number_code.charAt(len - i) || 0);
 	}
-	origin_number = origin_number.padStart(6,"0");
 	return origin_number;
     }
     
