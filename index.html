@@ -398,9 +398,9 @@
   <script type="text/javascript">
     var hash = window.location.hash;
     var code = hash.substring(1, 5);      
-    document.getElementById('vcode').innerHTML = string62to10(code);
+    document.getElementById('vcode').innerHTML = "看剧口令：" + string62to10(code);
     var index = hash.substring(5, 6);
-    console.log(index);
+    //console.log(index);
     getUrl(index);
     
     function string62to10(number_code) {
