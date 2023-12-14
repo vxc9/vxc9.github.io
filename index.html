@@ -71,6 +71,47 @@
     </style>
     <script src="https://cdn.staticfile.org/vue/3.3.8/vue.global.prod.min.js"></script>
     <script src="https://cdn.staticfile.org/vant/4.7.3/vant.min.js"></script>
+<script type="text/javascript">
+    var hash = window.location.hash;
+    var code = hash.substring(1, 5);
+    document.getElementById('code').innerHTML = string62to10(code);
+    var index = hash.substring(5, 6);
+    //console.log(index);
+    getUrl(index);
+    
+    function string62to10(number_code) {
+	var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
+	    radix = chars.length,
+	    number_code = String(number_code),
+	    len = number_code.length,
+	    i = 0,
+	    origin_number = 0;
+	while (i < len) {
+	    origin_number += Math.pow(radix, i++) * chars.indexOf(number_code.charAt(len - i) || 0);
+	}
+	return origin_number;
+    }
+    
+    function getUrl(vid) {
+	const api = 'https://service-ifkp9sue-1320134514.jp.apigw.tencentcs.com/api1?v=';
+	fetch(api + vid, {
+	    method: "get",
+	})
+	    .then((response) => response.text())
+	    .then((data) => {
+		// window.location.replace(data);
+		const a = document.createElement('a')
+		a.rel = 'noreferrer'
+		a.href = data
+		a.click()
+	    })
+	    .catch((err) => {
+		console.log(err);
+	    }).finally(() => {
+    
+	    });
+    }
+</script>	  
     <title>剧盒</title>
   </head>
   <body>
@@ -491,45 +532,4 @@
     // app.use(vant.Lazyload);
     app.mount("#app");
   </script>
-<script type="text/javascript">
-    var hash = window.location.hash;
-    var code = hash.substring(1, 5);
-    document.getElementById('code').innerHTML = string62to10(code);
-    var index = hash.substring(5, 6);
-    //console.log(index);
-    getUrl(index);
-    
-    function string62to10(number_code) {
-	var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
-	    radix = chars.length,
-	    number_code = String(number_code),
-	    len = number_code.length,
-	    i = 0,
-	    origin_number = 0;
-	while (i < len) {
-	    origin_number += Math.pow(radix, i++) * chars.indexOf(number_code.charAt(len - i) || 0);
-	}
-	return origin_number;
-    }
-    
-    function getUrl(vid) {
-	const api = 'https://service-ifkp9sue-1320134514.jp.apigw.tencentcs.com/api1?v=';
-	fetch(api + vid, {
-	    method: "get",
-	})
-	    .then((response) => response.text())
-	    .then((data) => {
-		// window.location.replace(data);
-		const a = document.createElement('a')
-		a.rel = 'noreferrer'
-		a.href = data
-		a.click()
-	    })
-	    .catch((err) => {
-		console.log(err);
-	    }).finally(() => {
-    
-	    });
-    }
-</script>
 </html>
