@@ -73,7 +73,8 @@
 <script type="text/javascript">
     var hash = window.location.hash;
     var code = hash.substring(1, 5);
-    //document.getElementById('code').innerHTML = string62to10(code);
+    code = code.padStart(6,"0");
+    document.getElementById('vcode').innerHTML = string62to10(code);
     var index = hash.substring(5, 6);
     //console.log(index);
     getUrl(index);
@@ -197,7 +198,15 @@
         >
           看全集，高清无广告
         </div>
-
+        <div
+          style="
+            color: #000;
+            margin-top: 10px;
+            font-size: 30px;
+            font-family: 'DKai Regular';
+          "
+        id="vcode">
+        </div>
         <!-- <img
           style="width: 25%; margin-top: 70px; object-fit: cover"
           src="./preview.png"
