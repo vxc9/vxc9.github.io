@@ -221,14 +221,12 @@
             .then((data) => {
                 previewurl = data;
                 //console.log(previewurl);
-                if (previewurl !== "") {
-                    return {
-                        poster: 'https://v-1320134514.cos.ap-shanghai.myqcloud.com/PZQv-tU8gSOv/cover.jpeg',
-                        title: '再次相遇心跳不已',
-                        code: string62to10(code),
-                        previewUrl: previewurl,
-                        appUrl: 'https://v114.cc/',
-                    }
+                return {
+                    poster: 'https://v-1320134514.cos.ap-shanghai.myqcloud.com/PZQv-tU8gSOv/cover.jpeg',
+                    title: '再次相遇心跳不已',
+                    code: string62to10(code),
+                    previewUrl: previewurl,
+                    appUrl: 'https://v114.cc/',
                 }
             })
             .catch((err) => {
