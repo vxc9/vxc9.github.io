@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta name="viewport"
         content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
@@ -191,34 +190,61 @@
         </div>
     </div>
 </body>
-<!-- <script src="https://cdn.staticfile.org/html2canvas/1.4.1/html2canvas.min.js"></script> -->
 <script>
+    function string62to10(number_code) {
+    	var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
+    	    radix = chars.length,
+    	    number_code = String(number_code),
+    	    len = number_code.length,
+    	    i = 0,
+    	    origin_number = 0;
+    	while (i < len) {
+    	    origin_number += Math.pow(radix, i++) * chars.indexOf(number_code.charAt(len - i) || 0);
+    	}
+    	origin_number = origin_number.toString();
+    	origin_number = origin_number.padStart(6,"0");	
+    	return origin_number;
+    }
+    
+    function getUrl(vid) {
+
+    }
+    
     async function readFromAPI() {
-        return {
-            poster: 'https://v-1320134514.cos.ap-shanghai.myqcloud.com/PZQv-tU8gSOv/cover.jpeg',
-            title: '再次相遇心跳不已',
-            code: '123456',
-            previewUrl: 'https://v3-web.douyinvod.com/8fe2e36d1acf0a2fc4d2a5dd1e03b3da/657dd40a/video/tos/cn/tos-cn-ve-15/oAyFI5vAAzhs0g3EE20BNfuOqACcPEmLeOvyYS/?a=6383&ch=26&cr=3&dr=0&lr=all&cd=0%7C0%7C0%7C3&cv=1&br=1231&bt=1231&cs=0&ds=3&ft=LjhJEL998xIouEkmD0P5H4eaciDXtDnFi_QEeUi-GKLD1Inz&mime_type=video_mp4&qs=1&rc=aWc5NzRpZzw5ODg7OTozZUBpM2llc2g6Zjp3bzMzNGkzM0A0NjIwYDMyNV8xNV4xMjNgYSMvNmoycjRnXnBgLS1kLS9zcw%3D%3D&btag=e00038000&dy_q=1702740615&feature_id=46a7bb47b4fd1280f3d3825bf2b29388&l=202312162330150C722B0E48452DEACC5D',
-            appUrl: 'https://v114.cc/',
-        }
+        var hash = window.location.hash;
+        var code = hash.substring(1, 5);      
+        var index = hash.substring(5, 6);
+        const api = 'https://service-ifkp9sue-1320134514.jp.apigw.tencentcs.com/api1?v=';
+    	fetch(api + index, {
+    	    method: "get",
+    	})
+	    .then((response) => response.text())
+	    .then((data) => {
+            return {
+                poster: 'https://v-1320134514.cos.ap-shanghai.myqcloud.com/PZQv-tU8gSOv/cover.jpeg',
+                title: '再次相遇心跳不已',
+                code: string62to10(code);,
+                previewUrl: data,
+                appUrl: 'https://v114.cc/',
+            }
+	    })
+	    .catch((err) => {
+		console.log(err);
+	    }).finally(() => {
+    
+	    });
     }
-    function exportCanvasAsPNG(canvasElement, fileName) {
-        const MIME_TYPE = "image/png";
-        const imgURL = canvasElement.toDataURL(MIME_TYPE);
-        const dlLink = document.createElement('a');
-        dlLink.download = fileName;
-        dlLink.href = imgURL;
-        dlLink.dataset.downloadurl = [MIME_TYPE, dlLink.download, dlLink.href].join(':');
-        dlLink.click();
-    }
+    
     function $(selector) {
         return document.querySelector(selector)
     }
+    
     function isInQQ() { const inIosQQ = /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent) && /\sQQ/i.test(navigator.userAgent); const inAndroidQQ = /Android/i.test(navigator.userAgent) && /MQQBrowser/i.test(navigator.userAgent) && /\sQQ/i.test(navigator.userAgent); return inIosQQ || inAndroidQQ; }
     function isInWechat() {
         const wxb = window.WeixinJSBridge; return ((typeof wxb === "object" && typeof wxb.invoke === "function") || /MicroMessenger/i.test(navigator.userAgent)
         );
     }
+    
     function inApp() { const inWechat = isInWechat(); const inQQ = isInQQ(); const inAlipay = /alipay/i.test(navigator.userAgent); const inDingtalk = /dingtalk/i.test(navigator.userAgent); const inAweme = /(aweme|douyin|toutiao)/i.test(navigator.userAgent); return inWechat || inQQ || inAlipay || inDingtalk || inAweme; }
     window.addEventListener('load', async () => {
         const data = await readFromAPI()
@@ -239,13 +265,6 @@
             $('#tips').style.display = 'none'
             $('#tips-mask').style.display = 'none'
         })
-
-        // $('#code').addEventListener('click', () => {
-        //     html2canvas($('#app')).then(function (canvas) {
-        //         exportCanvasAsPNG(canvas, 'test.png')
-        //     });
-        // })
     })
 </script>
-
 </html>
