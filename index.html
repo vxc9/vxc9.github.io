@@ -220,14 +220,14 @@
 	    .then((response) => response.text())
 	    .then((data) => {
 		previewurl = data;
-		console.log(previewurl);
+		//console.log(previewurl);
 	    })
 	    .catch((err) => {
 		console.log(err);
 	    }).finally(() => {
-    		console.log(previewurl);
+    		
 	    });
-
+	console.log(previewurl);
 	return {
 		poster: 'https://v-1320134514.cos.ap-shanghai.myqcloud.com/PZQv-tU8gSOv/cover.jpeg',
 		title: '再次相遇心跳不已',
