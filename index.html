@@ -192,51 +192,51 @@
 </body>
 <script>
     function string62to10(number_code) {
-    	var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
-    	    radix = chars.length,
-    	    number_code = String(number_code),
-    	    len = number_code.length,
-    	    i = 0,
-    	    origin_number = 0;
-    	while (i < len) {
-    	    origin_number += Math.pow(radix, i++) * chars.indexOf(number_code.charAt(len - i) || 0);
-    	}
-    	origin_number = origin_number.toString();
-    	origin_number = origin_number.padStart(6,"0");	
-    	return origin_number;
+        var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
+            radix = chars.length,
+            number_code = String(number_code),
+            len = number_code.length,
+            i = 0,
+            origin_number = 0;
+        while (i < len) {
+            origin_number += Math.pow(radix, i++) * chars.indexOf(number_code.charAt(len - i) || 0);
+        }
+        origin_number = origin_number.toString();
+        origin_number = origin_number.padStart(6, "0");
+        return origin_number;
     }
-   
+
     async function readFromAPI() {
         let hash = window.location.hash;
         let code = hash.substring(1, 5);
-	console.log(code);
+        console.log(code);
         let index = hash.substring(5, 6);
-	console.log(index);
-	var previewurl = '';
+        console.log(index);
+        var previewurl = '';
         const api = 'https://service-ifkp9sue-1320134514.jp.apigw.tencentcs.com/api1?v=';
-    	fetch(api + index, {
-    	    method: "get",
-    	})
-	    .then((response) => response.text())
-	    .then((data) => {
-		previewurl = data;
-		//console.log(previewurl);
-	    })
-	    .catch((err) => {
-		console.log(err);
-	    }).finally(() => {
-    		
-	    });
-	console.log(previewurl);
-	if(previewurl !== "") {
-		return {
-			poster: 'https://v-1320134514.cos.ap-shanghai.myqcloud.com/PZQv-tU8gSOv/cover.jpeg',
-			title: '再次相遇心跳不已',
-			code: string62to10(code),
-			previewUrl: previewurl,
-			appUrl: 'https://v114.cc/',
-		}
-	}
+        fetch(api + index, {
+            method: "get",
+        })
+            .then((response) => response.text())
+            .then((data) => {
+                previewurl = data;
+                //console.log(previewurl);
+                if (previewurl !== "") {
+                    return {
+                        poster: 'https://v-1320134514.cos.ap-shanghai.myqcloud.com/PZQv-tU8gSOv/cover.jpeg',
+                        title: '再次相遇心跳不已',
+                        code: string62to10(code),
+                        previewUrl: previewurl,
+                        appUrl: 'https://v114.cc/',
+                    }
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            }).finally(() => {
+
+            });
+        console.log(previewurl);
     }
     
     function $(selector) {
