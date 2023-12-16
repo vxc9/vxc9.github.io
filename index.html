@@ -220,7 +220,7 @@
         })
             .then((response) => response.text())
             .then((data) => {
-                previewurl = data;
+                previewurl = data['url'];
                 //console.log(previewurl);
             })
             .catch((err) => {
