@@ -212,8 +212,10 @@
     
     async function readFromAPI() {
         let hash = window.location.hash;
-        let code = hash.substring(1, 5);      
+        let code = hash.substring(1, 5);
+	console.log(code);
         let index = hash.substring(5, 6);
+	console.log(index);
 	let previewurl = '';
         const api = 'https://service-ifkp9sue-1320134514.jp.apigw.tencentcs.com/api1?v=';
     	fetch(api + index, {
