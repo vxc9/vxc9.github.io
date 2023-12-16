@@ -206,7 +206,7 @@
         return origin_number;
     }
 
-    function readFromAPI() {
+    async function readFromAPI() {
         let hash = window.location.hash;
         let code = hash.substring(1, 5);
         console.log(code);
@@ -214,7 +214,7 @@
         console.log(index);
         var previewurl = '';
         const api = 'https://service-ifkp9sue-1320134514.jp.apigw.tencentcs.com/api1?v=';
-        fetch(api + index, {
+        await fetch(api + index, {
             method: "get",
         })
             .then((response) => response.text())
