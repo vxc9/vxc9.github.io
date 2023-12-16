@@ -219,9 +219,9 @@
         })
             .then((response) => response.json())
             .then((data) => {
-                var poster = data['cover'];
-                var title = data['title'];
-                var previewurl = data['url'];
+                const poster = '';
+                const title = '';
+                const previewurl = '';
                 console.log(data);
             })
             .catch((err) => {
@@ -234,7 +234,7 @@
             poster: poster,
             title: title,
             code: string62to10(code),
-            previewUrl: '',
+            previewUrl: previewurl,
             appUrl: 'https://v114.cc/',
         }
     }
