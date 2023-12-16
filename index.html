@@ -219,9 +219,9 @@
         })
             .then((response) => response.json())
             .then((data) => {
-                const poster = data['cover'];
-                const title = data['title'];
-                const previewurl = data['url'];
+                let poster = data['cover'];
+                let title = data['title'];
+                let previewurl = data['url'];
                 //console.log(previewurl);
             })
             .catch((err) => {
