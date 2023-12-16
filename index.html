@@ -218,7 +218,7 @@
         await fetch(api + index, {
             method: "get",
         })
-            .then((response) => response.text())
+            .then((response) => response.json())
             .then((data) => {
                 previewurl = data['url'];
                 //console.log(previewurl);
