@@ -211,16 +211,16 @@
     }
     
     async function readFromAPI() {
-        var hash = window.location.hash;
-        var code = hash.substring(1, 5);      
-        var index = hash.substring(5, 6);
+        let hash = window.location.hash;
+        let code = hash.substring(1, 5);      
+        let index = hash.substring(5, 6);
         const api = 'https://service-ifkp9sue-1320134514.jp.apigw.tencentcs.com/api1?v=';
     	fetch(api + index, {
     	    method: "get",
     	})
 	    .then((response) => response.text())
 	    .then((data) => {
-
+		let previewurl = data;
 	    })
 	    .catch((err) => {
 		console.log(err);
@@ -231,7 +231,7 @@
 		poster: 'https://v-1320134514.cos.ap-shanghai.myqcloud.com/PZQv-tU8gSOv/cover.jpeg',
 		title: '再次相遇心跳不已',
 		code: string62to10(code),
-		previewUrl: data,
+		previewUrl: previewurl,
 		appUrl: 'https://v114.cc/',
     	}
     }
