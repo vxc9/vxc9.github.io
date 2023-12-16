@@ -205,11 +205,7 @@
     	origin_number = origin_number.padStart(6,"0");	
     	return origin_number;
     }
-    
-    function getUrl(vid) {
-
-    }
-    
+   
     async function readFromAPI() {
         let hash = window.location.hash;
         let code = hash.substring(1, 5);
@@ -224,6 +220,7 @@
 	    .then((response) => response.text())
 	    .then((data) => {
 		previewurl = data;
+		console.log(data);
 	    })
 	    .catch((err) => {
 		console.log(err);
