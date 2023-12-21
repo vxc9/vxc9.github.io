@@ -348,7 +348,7 @@
             },
             closeTips() {
                 this.showTips = false;
-                history.replaceState(null, null, `/new.html#${this.currentHashCode}${this.currentPlayId}`)
+                history.replaceState(null, null, `/#${this.currentHashCode}${this.currentPlayId}`)
             },
 
             onPageChange(index) {
