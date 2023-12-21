@@ -192,7 +192,7 @@
 
                         <img class="bg" :src="p.poster" referrerpolicy="no-referrer" />
                         <div class="mask" @click="closeTips">
-                            <a :href="p.previewurl" rel="noreferrer" @click.stop="refresh">
+                            <a :href="p.previewurl" rel="noreferrer" @click.stop>
                                 <van-icon name="play-circle" color="#ffffff77" size="60" />
                             </a>
                         </div>
@@ -243,9 +243,6 @@
         },
 
         methods: {
-            refresh() {
-                window.location.reload()
-            },
 
             string62to10(number_code) {
                 var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
