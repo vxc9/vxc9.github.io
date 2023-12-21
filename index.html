@@ -167,6 +167,9 @@
         </div>
 
         <div class="container">
+            <div style="width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center;"  v-if="loading" >
+                <van-loading color="#ffffff" />
+            </div>
             <div class="topbar">
                 <div class="left">
                     <div class="title">{{ currentTitle }}</div>
@@ -211,6 +214,7 @@
 
                 ids: [1, 2, 3, 4, 5, 0],
                 plays: [],
+                loading: true,
                 /**
                  *  poster: '',
                     title: '',
@@ -290,6 +294,8 @@
                     this.currentPlayId = this.plays[0].id
                 }).catch(err => {
                     console.log(err)
+                }).finally(() => {
+                    this.loading = false
                 });
             },
 
@@ -342,7 +348,7 @@
             },
             closeTips() {
                 this.showTips = false;
-                history.replaceState(null, null, `/#${this.currentHashCode}${this.currentPlayId}`)
+                history.replaceState(null, null, `/new.html#${this.currentHashCode}${this.currentPlayId}`)
             },
 
             onPageChange(index) {
