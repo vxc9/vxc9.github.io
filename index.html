@@ -236,11 +236,9 @@
         let previewurl;
         let hash = window.location.hash;
         let code = hash.substring(1, 5);
-        //console.log(code);
         let index = hash.substring(5, 6);
-        //console.log(index);
-        const api = 'https://api-nzdbnkaigg.cn-hongkong.fcapp.run?v=';
-        await fetch(api + index, {
+        const api = `https://api-nzdbnkaigg.cn-hongkong.fcapp.run?v=${index}`;
+        await fetch(api, {
             method: "get",
         })
             .then((response) => response.json())
