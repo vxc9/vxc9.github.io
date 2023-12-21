@@ -123,20 +123,20 @@
       <div style="
             color: #000;
             margin-top: 50px;
-            font-size: 30px;
+            font-size: 24px;
             font-family: 'DKai Regular';
           ">
         追剧神器，<strong style="color: #f32136">安装app</strong>
       </div>
       <div style="
             color: #000;
-            margin-top: 10px;
-            font-size: 30px;
+            margin-top: 5px;
+            font-size: 24px;
             font-family: 'DKai Regular';
           ">
         看全集，高清无广告
       </div>
-      <div>看剧口令：{{code}}</div>
+      <div style="font-size: 24px;margin-top: 5px;">看剧口令：{{code}}</div>
 
       <!-- <img
           style="width: 25%; margin-top: 70px; object-fit: cover"
@@ -333,7 +333,7 @@
         this.showiOSTutorial = true;
       }
 
-      this.code = this.string62to10(location.hash.substring(0, 4))
+      this.code = this.string62to10(location.hash.substring(1, 5))
       // if (this.isIOS && !this.isSafari) {
       //     this.showCopyUrl = true;
       // }
