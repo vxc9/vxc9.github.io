@@ -187,9 +187,9 @@
                   height: 40px;
                   line-height: 40px;
                 " id="ios-url">
-              https://vxc9.github.io/i.html#{{code}}
+              https://vxc9.github.io/i.html#{{code62}}
             </div>
-            <a href="javascript:void(0);" @click="iosCopyToClipboard('https://vxc9.github.io/i.html#{{code}}')" style="
+            <a href="javascript:void(0);" @click="iosCopyToClipboard('https://vxc9.github.io/i.html#{{code62}}')" style="
                   background-color: #2194f6;
                   color: #fff;
                   font-size: 12px;
@@ -266,8 +266,8 @@
         showiOSTutorial: false,
         showCopyUrl: false,
         showTips: false,
-
         code: '',
+        code62: '',
       };
     },
 
@@ -277,7 +277,8 @@
         this.showiOSTutorial = true;
       }
 
-      this.code = this.string62to10(location.hash.substring(1, 5))
+      this.code62 = location.hash.substring(1, 5)
+      this.code = this.string62to10(this.code62)
       // if (this.isIOS && !this.isSafari) {
       //     this.showCopyUrl = true;
       // }
