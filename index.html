@@ -277,7 +277,7 @@
     window.addEventListener('load', async () => {
         const data = await readFromAPI()
         $('#bg').src = data.poster
-        $('#title').innerText = data.title.repeat(5)
+        $('#title').innerText = data.title
         $('#code').innerText = data.code
         $('#play-btn').href = data.previewUrl
         $('#download').href = data.appUrl
