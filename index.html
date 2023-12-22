@@ -236,8 +236,8 @@
         let previewurl;
         let hash = window.location.hash;
         let code = hash.substring(1, 5);
-        let index = hash.substring(5, 6);
-        const api = `https://api-nzdbnkaigg.cn-hongkong.fcapp.run?v=${index}`;
+        //let index = hash.substring(5, 6);
+        const api = `https://api-nzdbnkaigg.cn-hongkong.fcapp.run?v=${string62to10(code)}`;
         await fetch(api, {
             method: "get",
         })
