@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta name="viewport"
         content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
@@ -53,8 +54,9 @@
         #topbar .left {
             margin-left: 15px;
             width: 0;
-            flex:1;
+            flex: 1;
         }
+
         #preview {
             margin-right: 15px;
         }
@@ -64,7 +66,8 @@
             object-fit: cover;
         }
 
-        #title, #code {
+        #title,
+        #code {
             color: #fff;
             font-size: 12px;
             text-shadow: 1px 1px 2px black;
@@ -116,6 +119,7 @@
             background: linear-gradient(to right, rgb(255, 96, 52), rgb(238, 10, 36));
             border-radius: 30px;
             font-size: 12px;
+            margin-right: 15px;
         }
 
         .btn.plain {
@@ -231,56 +235,43 @@
     }
 
     async function readFromAPI() {
-        let poster;
-        let title;
-        let previewurl;
-        let hash = window.location.hash;
-        let code62 = hash.substring(1, 5);
-        //let index = hash.substring(5, 6);
-        const api = `https://api-nzdbnkaigg.cn-hongkong.fcapp.run?v=${string62to10(code62)}`;
-        await fetch(api, {
-            method: "get",
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                poster = data['cover'];
-                title = data['title'];
-                previewurl = data['url'];
-                console.log(data);
-            })
-            .catch((err) => {
-                console.log(err);
-            }).finally(() => {
+        try {
+            const hash = window.location.hash;
+            const code62 = hash.substring(1, 5);
 
-            });
-        
-        return {
-            poster: poster,
-            title: title,
-            code62: code62,
-            code: string62to10(code62),
-            previewUrl: previewurl,
-            appUrl: 'i.html#'+ code62,
+            const api = `https://api-nzdbnkaigg.cn-hongkong.fcapp.run?v=${string62to10(code62)}`;
+            const response = await fetch(api)
+            const result = await response.json()
+            return {
+                poster: result.cover,
+                title: result.title,
+                previewUrl: result.url,
+                code62,
+                code: string62to10(code62),
+                appUrl: 'i.html#' + code62,
+            }
+        } catch (err) {
+            console.log(err)
         }
     }
-    
+
     function $(selector) {
         return document.querySelector(selector)
     }
-    
+
     function isInQQ() { const inIosQQ = /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent) && /\sQQ/i.test(navigator.userAgent); const inAndroidQQ = /Android/i.test(navigator.userAgent) && /MQQBrowser/i.test(navigator.userAgent) && /\sQQ/i.test(navigator.userAgent); return inIosQQ || inAndroidQQ; }
     function isInWechat() {
         const wxb = window.WeixinJSBridge; return ((typeof wxb === "object" && typeof wxb.invoke === "function") || /MicroMessenger/i.test(navigator.userAgent)
         );
     }
-    
+
     function inApp() { const inWechat = isInWechat(); const inQQ = isInQQ(); const inAlipay = /alipay/i.test(navigator.userAgent); const inDingtalk = /dingtalk/i.test(navigator.userAgent); const inAweme = /(aweme|douyin|toutiao)/i.test(navigator.userAgent); return inWechat || inQQ || inAlipay || inDingtalk || inAweme; }
     window.addEventListener('load', async () => {
         const data = await readFromAPI()
         $('#bg').src = data.poster
         $('#title').innerText = data.title
         $('#code').innerText = data.code
-        if (data.previewUrl !== 'undefined') {
+        if (typeof data.previewUrl === 'undefined') {
             $('#play-btn').href = data.previewUrl
         }
         $('#download').href = data.appUrl
@@ -299,4 +290,5 @@
         })
     })
 </script>
+
 </html>
