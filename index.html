@@ -280,7 +280,7 @@
         $('#bg').src = data.poster
         $('#title').innerText = data.title
         $('#code').innerText = data.code
-        if (data.previewUrl !== '') {
+        if (data.previewUrl !== 'undefined') {
             $('#play-btn').href = data.previewUrl
         }
         $('#download').href = data.appUrl
