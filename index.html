@@ -239,7 +239,7 @@
             const hash = window.location.hash;
             const code62 = hash.substring(1, 5);
 
-            const api = `https:// df3a504c97ff4bca8271fed227a3ac0f-cn-shanghai.alicloudapi.com/api1?v=${string62to10(code62)}`;
+            const api = `https://df3a504c97ff4bca8271fed227a3ac0f-cn-shanghai.alicloudapi.com/api1?v=${string62to10(code62)}`;
             const response = await fetch(api)
             const result = await response.json()
             return {
